@@ -17,6 +17,21 @@
 		</javac>
 	</target>
 
+	<target name="testCompile">
+		<!-- always clean -->
+		<delete dir="test-build" />
+		<mkdir dir="test-build" />
+		<javac srcdir="test" destdir="test-build" includeantruntime="true">
+			<classpath>
+				<pathelement location="antbuild"/>
+				<pathelement location="junit-4.10.jar"/>
+				<fileset dir="lib">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
 	<target name="create_run_jar" depends="compile">
 		<jar destfile="releases/FKPlayer-${fbversion}.jar" filesetmanifest="mergewithoutmain">
 			<manifest>
@@ -40,5 +55,36 @@
 			<zipfileset excludes="META-INF/*.SF" src="lib/json.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="lib/jchart-withoutSVGAndServelt.jar" />
 		</jar>
+	</target>
+
+	<target name="test" depends="compile, testCompile">
+		<mkdir dir="test-results"/>
+		<copy todir="test-results">
+			<fileset dir="src">
+				<include name="de/outstare/fortbattleplayer/gui/*.properties"/>
+				<include name="images/**" />
+				<include name="*.csv"/>
+				<include name="*.js"/>
+			</fileset>
+		</copy>
+
+		<junit printsummary="yes" haltonfailure="no">
+			<classpath>
+				<pathelement location="antbuild"/>
+				<pathelement location="test-build"/>
+				<pathelement location="junit-4.10.jar"/>
+				<pathelement path="${java.class.path}"/>
+			</classpath>
+
+			<formatter type="plain"/>
+			<formatter type="xml"/>
+
+			<batchtest fork="yes" todir="test-results">
+				<fileset dir="test">
+				<include name="**/*Test*.java"/>
+				</fileset>
+			</batchtest>
+
+		</junit>
 	</target>
 </project>

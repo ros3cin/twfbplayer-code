@@ -1,2 +1,5 @@
 antbuild/
 releases/
+bin/
+test-build/
+test-results/
