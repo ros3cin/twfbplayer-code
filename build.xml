@@ -18,7 +18,7 @@
 	</target>
 
 	<target name="create_run_jar" depends="compile">
-		<jar destfile="/Users/daniel/Documents/workspace/FortbattlePlayer/releases/FKPlayer-${fbversion}.jar" filesetmanifest="mergewithoutmain">
+		<jar destfile="releases/FKPlayer-${fbversion}.jar" filesetmanifest="mergewithoutmain">
 			<manifest>
 				<attribute name="Main-Class" value="de.outstare.fortbattleplayer.Main" />
 				<attribute name="Class-Path" value="." />
@@ -31,14 +31,14 @@
 				<attribute name="Codebase" value="*" />
 			</manifest>
 			<fileset dir="antbuild" />
-			<fileset dir="bin">
+			<fileset dir="src">
 				<include name="de/outstare/fortbattleplayer/gui/*.properties"/>
 				<include name="images/**" />
 				<include name="*.csv"/>
 				<include name="*.js"/>
 			</fileset>
-			<zipfileset excludes="META-INF/*.SF" src="/Users/daniel/Documents/workspace/FBPlayer/trunk/lib/json.jar" />
-			<zipfileset excludes="META-INF/*.SF" src="/Users/daniel/Documents/workspace/FBPlayer/trunk/lib/jchart-withoutSVGAndServelt.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="lib/json.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="lib/jchart-withoutSVGAndServelt.jar" />
 		</jar>
 	</target>
 </project>
