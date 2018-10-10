@@ -28,6 +28,11 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import de.outstare.fortbattleplayer.Configuration;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * An instance of this will be used by the player to hold its tunable
@@ -54,7 +59,7 @@ public class PlayerConfiguration implements Cloneable {
 	 */
 	private final Lock playLock = new ReentrantLock();
 
-	private final Set<PlayerConfigurationListener> listeners = new HashSet<PlayerConfigurationListener>();
+	private final Set<PlayerConfigurationListener> listeners = new TreeSortedSet<PlayerConfigurationListener>();
 
 	/**
 	 * current state of the player

@@ -29,6 +29,11 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 import de.outstare.fortbattleplayer.model.Combatant;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * A {@link Battleplayer} controls the battle. It is a puppet player controlling
@@ -39,7 +44,7 @@ import de.outstare.fortbattleplayer.model.Combatant;
 public class Battleplayer implements Player {
 	private static final transient Logger LOG = Logger.getLogger(Battleplayer.class.getName());
 	private final Battleplan plan;
-	private final Set<RoundListener> listeners = new HashSet<RoundListener>();
+	private final Set<RoundListener> listeners = new TreeSortedSet<RoundListener>();
 	private boolean isPaused = false;
 	/**
 	 * round numbers may not be sequential (this variable is also used for

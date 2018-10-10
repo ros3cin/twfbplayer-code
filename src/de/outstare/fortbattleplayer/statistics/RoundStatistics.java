@@ -2,6 +2,7 @@ package de.outstare.fortbattleplayer.statistics;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.LinkedList;
 
 /**
  * A {@link RoundStatistics} has a value for each round of the battle.
@@ -9,7 +10,7 @@ import java.util.List;
  * @author daniel
  */
 class RoundStatistics implements LabeledData {
-	private final List<Double> values = new ArrayList<Double>();
+	private final List<Double> values = new LinkedList<Double>();
 	private final String description;
 	private final String type;
 

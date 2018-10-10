@@ -29,6 +29,11 @@ import java.util.Set;
 import de.outstare.fortbattleplayer.model.Area;
 import de.outstare.fortbattleplayer.model.Combatant;
 import de.outstare.fortbattleplayer.model.CombatantObserver;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * A CombatantEventDispatcher collects the events of all combatants, to give it
@@ -39,7 +44,7 @@ import de.outstare.fortbattleplayer.model.CombatantObserver;
  * @author daniel
  */
 public class CombatantEventDispatcher implements CombatantObserver {
-	private final Set<CombatantObserver> observers = new HashSet<CombatantObserver>();
+	private final Set<CombatantObserver> observers = new TreeSortedSet<CombatantObserver>();
 
 	/**
 	 * @param combatants

@@ -5,6 +5,11 @@ import java.util.Map;
 
 import de.outstare.fortbattleplayer.model.Combatant;
 import de.outstare.fortbattleplayer.model.CombatantSide;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * A {@link Counter} for all {@link CombatantSide}s
@@ -12,7 +17,7 @@ import de.outstare.fortbattleplayer.model.CombatantSide;
  * @author daniel
  */
 class AllCombatantSidesCounter {
-	private final Map<CombatantSide, Counter> perSideCounters = new HashMap<CombatantSide, Counter>();
+	private final Map<CombatantSide, Counter> perSideCounters = new UnifiedMap<CombatantSide, Counter>();
 
 	/**
 	 * initialize a new {@link AllCombatantSidesCounter}

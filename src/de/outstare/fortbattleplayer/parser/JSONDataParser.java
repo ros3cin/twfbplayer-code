@@ -75,6 +75,11 @@ import de.outstare.fortbattleplayer.statistics.AllStatistics;
 import de.outstare.fortbattleplayer.statistics.BattleStatistics;
 import de.outstare.fortbattleplayer.statistics.CombatantStatType;
 import de.outstare.fortbattleplayer.statistics.CombatantStatistic;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 import de.outstare.fortbattleplayer.statistics.RoundStatGenerator;
 
 /**
@@ -98,19 +103,19 @@ public class JSONDataParser {
 	/**
 	 * lookup for {@link Area}s (maps the-west map indexes to model objects)
 	 */
-	private final Map<Integer, Area> areas = new HashMap<Integer, Area>();
+	private final Map<Integer, Area> areas = new HashedMap<Integer, Area>();
 	/**
 	 * lookup for {@link Combatant}s (maps the-west player IDs to model objects)
 	 */
-	private final Map<Integer, Combatant> westPlayers = new HashMap<Integer, Combatant>();
+	private final Map<Integer, Combatant> westPlayers = new HashedMap<Integer, Combatant>();
 	/**
 	 * where the players placed the combatants (maybe multiple on same field)
 	 */
-	private final Map<Combatant, CombatantState> preBattleCombatantStates = new HashMap<Combatant, CombatantState>();
+	private final Map<Combatant, CombatantState> preBattleCombatantStates = new HashedMap<Combatant, CombatantState>();
 	/**
 	 * where the player actual stands at the beginning
 	 */
-	private final Map<Combatant, CombatantState> initialCombatantStates = new HashMap<Combatant, CombatantState>();
+	private final Map<Combatant, CombatantState> initialCombatantStates = new HashedMap<Combatant, CombatantState>();
 	private final CombatantStatistic combatantStats;
 	private final RoundStatGenerator roundStatistics = new RoundStatGenerator();
 

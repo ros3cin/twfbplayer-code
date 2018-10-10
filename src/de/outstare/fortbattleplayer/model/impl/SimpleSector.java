@@ -34,6 +34,11 @@ import de.outstare.fortbattleplayer.model.SectorBonus;
 import de.outstare.fortbattleplayer.model.SectorBonus.BonusType;
 import de.outstare.fortbattleplayer.model.SectorObserver;
 import de.outstare.fortbattleplayer.model.Weapon;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * 
@@ -51,8 +56,8 @@ public class SimpleSector implements Sector {
 
 	private CombatantSide occupier = null;
 	private int occupierCount = 0;
-	private final Set<Area> areas = new HashSet<Area>();
-	private final Set<SectorObserver> observers = new HashSet<SectorObserver>();
+	private final Set<Area> areas = new TreeSortedSet<Area>();
+	private final Set<SectorObserver> observers = new TreeSortedSet<SectorObserver>();
 
 	/**
 	 * @param height

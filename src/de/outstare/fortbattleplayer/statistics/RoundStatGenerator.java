@@ -7,6 +7,11 @@ import java.util.Map.Entry;
 import de.outstare.fortbattleplayer.model.Combatant;
 import de.outstare.fortbattleplayer.model.CombatantSide;
 import de.outstare.fortbattleplayer.model.CombatantState;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * generate {@link LabeledData} for selected aspects. To do this the state
@@ -15,8 +20,8 @@ import de.outstare.fortbattleplayer.model.CombatantState;
  * @author daniel
  */
 public class RoundStatGenerator {
-	private final Map<CombatantSide, LabeledData> count = new HashMap<CombatantSide, LabeledData>();
-	private final Map<CombatantSide, LabeledData> health = new HashMap<CombatantSide, LabeledData>();
+	private final Map<CombatantSide, LabeledData> count = new HashedMap<CombatantSide, LabeledData>();
+	private final Map<CombatantSide, LabeledData> health = new HashedMap<CombatantSide, LabeledData>();
 
 	/**
 	 * create a new {@link RoundStatGenerator}
@@ -80,7 +85,7 @@ public class RoundStatGenerator {
 	}
 
 	private abstract static class AbstractAggregator implements RoundAggregator {
-		private final Map<CombatantSide, Counter> sums = new HashMap<CombatantSide, Counter>();
+		private final Map<CombatantSide, Counter> sums = new HashedMap<CombatantSide, Counter>();
 
 		AbstractAggregator() {
 			for (final CombatantSide side : CombatantSide.values()) {

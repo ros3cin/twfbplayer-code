@@ -12,6 +12,11 @@ import java.util.logging.Logger;
 import de.outstare.fortbattleplayer.model.Combatant;
 import de.outstare.fortbattleplayer.model.Weapon;
 import de.outstare.fortbattleplayer.model.WeaponData;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * A JSWeaponData uses the data from the JavaScript object "ItemManager".
@@ -33,7 +38,7 @@ public class JSWeaponData implements WeaponData {
 	 * @return
 	 */
 	private static Map<Integer, WeaponGameData> loadData(final String filename) {
-		final Map<Integer, WeaponGameData> result = new HashMap<Integer, WeaponGameData>();
+		final Map<Integer, WeaponGameData> result = new UnifiedMap<Integer, WeaponGameData>();
 		try {
 			final InputStream fileInput = JSWeaponData.class.getResourceAsStream(filename);
 			if (fileInput == null) {

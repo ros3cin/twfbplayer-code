@@ -32,6 +32,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import de.outstare.fortbattleplayer.model.CharacterClass;
 import de.outstare.fortbattleplayer.model.CombatantSide;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * A statistic for combatants
@@ -43,7 +48,7 @@ import de.outstare.fortbattleplayer.model.CombatantSide;
  */
 public class CombatantStatistic implements StaticStatistics {
 	private final int numberOfRounds;
-	private final Map<CombatantStatType, DataSet> allData = new HashMap<CombatantStatType, DataSet>();
+	private final Map<CombatantStatType, DataSet> allData = new HashedMap<CombatantStatType, DataSet>();
 
 	/**
 	 * create statistics for the given number of rounds.

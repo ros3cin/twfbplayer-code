@@ -40,6 +40,11 @@ import de.outstare.fortbattleplayer.model.CombatantObserver;
 import de.outstare.fortbattleplayer.model.CombatantSide;
 import de.outstare.fortbattleplayer.model.SectorBonus;
 import de.outstare.fortbattleplayer.model.Weapon;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * 
@@ -47,14 +52,14 @@ import de.outstare.fortbattleplayer.model.Weapon;
  */
 public class BattleStatistics implements DynamicStatistics, CombatantObserver {
 	private static final transient Logger LOG = Logger.getLogger(BattleStatistics.class.getName());
-	private final Map<Combatant, OnlineCounter> onliners = new HashMap<Combatant, OnlineCounter>();
-	private final Map<CombatantSide, List<CriticalHit>> critHits = new HashMap<CombatantSide, List<CriticalHit>>();
+	private final Map<Combatant, OnlineCounter> onliners = new UnifiedMap<Combatant, OnlineCounter>();
+	private final Map<CombatantSide, List<CriticalHit>> critHits = new HashedMap<CombatantSide, List<CriticalHit>>();
 	{
 		for (final CombatantSide side : CombatantSide.values()) {
 			critHits.put(side, new ArrayList<CriticalHit>());
 		}
 	}
-	private final Map<CombatantSide, Set<PositionSwitch>> swapList = new HashMap<CombatantSide, Set<PositionSwitch>>();
+	private final Map<CombatantSide, Set<PositionSwitch>> swapList = new HashedMap<CombatantSide, Set<PositionSwitch>>();
 	{
 		for (final CombatantSide side : CombatantSide.values()) {
 			swapList.put(side, new HashSet<PositionSwitch>());
@@ -66,25 +71,25 @@ public class BattleStatistics implements DynamicStatistics, CombatantObserver {
 	private final AllCombatantSidesCounter attackBonuses = new AllCombatantSidesCounter();
 	private final AllCombatantSidesCounter defenseBonuses = new AllCombatantSidesCounter();
 	private final Map<Combatant, Counter> shots = new HashMap<Combatant, Counter>();
-	private final Map<CombatantSide, RoundStatistics> shotsPerRound = new HashMap<CombatantSide, RoundStatistics>();
+	private final Map<CombatantSide, RoundStatistics> shotsPerRound = new HashedMap<CombatantSide, RoundStatistics>();
 	{
 		for (final CombatantSide side : CombatantSide.values()) {
 			shotsPerRound.put(side, new RoundStatistics("shots", "shots"));
 		}
 	}
-	private final Map<CombatantSide, RoundStatistics> hitsPerRound = new HashMap<CombatantSide, RoundStatistics>();
+	private final Map<CombatantSide, RoundStatistics> hitsPerRound = new HashedMap<CombatantSide, RoundStatistics>();
 	{
 		for (final CombatantSide side : CombatantSide.values()) {
 			hitsPerRound.put(side, new RoundStatistics("hits", "hits"));
 		}
 	}
-	private final Map<CombatantSide, AtomicInteger> shotRoundCounter = new HashMap<CombatantSide, AtomicInteger>();
+	private final Map<CombatantSide, AtomicInteger> shotRoundCounter = new HashedMap<CombatantSide, AtomicInteger>();
 	{
 		for (final CombatantSide side : CombatantSide.values()) {
 			shotRoundCounter.put(side, new AtomicInteger());
 		}
 	}
-	private final Map<CombatantSide, AtomicInteger> hitRoundCounter = new HashMap<CombatantSide, AtomicInteger>();
+	private final Map<CombatantSide, AtomicInteger> hitRoundCounter = new HashedMap<CombatantSide, AtomicInteger>();
 	{
 		for (final CombatantSide side : CombatantSide.values()) {
 			hitRoundCounter.put(side, new AtomicInteger());
@@ -93,7 +98,7 @@ public class BattleStatistics implements DynamicStatistics, CombatantObserver {
 	private final Map<Combatant, Counter> victims = new HashMap<Combatant, Counter>();
 	private final List<Combatant> turnOrder = new LinkedList<Combatant>();
 	private final List<AllCombatantSidesCounter> actorsPerRound = new ArrayList<AllCombatantSidesCounter>(50);
-	private final Map<Area, AreaStatistic> fieldStats = new HashMap<Area, AreaStatistic>();
+	private final Map<Area, AreaStatistic> fieldStats = new HashedMap<Area, AreaStatistic>();
 	private final int _numberOfDefenders;
 	private final int _numberOfAttacker;
 

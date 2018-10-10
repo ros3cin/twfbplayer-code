@@ -35,6 +35,12 @@ import de.outstare.fortbattleplayer.model.CombatantState;
 import de.outstare.fortbattleplayer.model.SectorBonus;
 import de.outstare.fortbattleplayer.model.Weapon;
 import de.outstare.fortbattleplayer.model.WeaponData;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
+import org.eclipse.collections.impl.set.mutable.UnifiedSet;
 
 /**
  * A Combatant with basic attributes (position, health)
@@ -47,7 +53,7 @@ public class SimpleCombatant implements Combatant {
 	private final CombatantSide side;
 	private final String name;
 	private final String city;
-	private final Set<CombatantObserver> observers = new HashSet<CombatantObserver>();
+	private final Set<CombatantObserver> observers = new UnifiedSet<CombatantObserver>();
 	private final Object stateChangeLock = new Object();
 	private final CharacterClass charClass;
 	private final int charLevel;

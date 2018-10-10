@@ -28,6 +28,11 @@ import java.util.List;
 import java.util.Map;
 
 import de.outstare.fortbattleplayer.model.CombatantSide;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * All the data about one aspect of a participant of a fortbattle for each
@@ -36,7 +41,7 @@ import de.outstare.fortbattleplayer.model.CombatantSide;
  * @author daniel
  */
 public class DataSet {
-	private final Map<CombatantSide, List<Integer>> valuesPerSide = new HashMap<CombatantSide, List<Integer>>();
+	private final Map<CombatantSide, List<Integer>> valuesPerSide = new HashedMap<CombatantSide, List<Integer>>();
 
 	/**
 	 * initialize a new DataSet

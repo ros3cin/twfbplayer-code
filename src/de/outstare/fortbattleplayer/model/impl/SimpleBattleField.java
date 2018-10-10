@@ -33,6 +33,11 @@ import java.util.Set;
 import de.outstare.fortbattleplayer.model.Area;
 import de.outstare.fortbattleplayer.model.Battlefield;
 import de.outstare.fortbattleplayer.model.Sector;
+import org.apache.commons.collections4.map.HashedMap;
+import org.eclipse.collections.impl.set.sorted.mutable.TreeSortedSet;
+import org.eclipse.collections.impl.map.mutable.UnifiedMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * A simple {@link Battlefield} which just is a set of {@link Area}s with
@@ -41,8 +46,8 @@ import de.outstare.fortbattleplayer.model.Sector;
  * @author daniel
  */
 public class SimpleBattleField implements Battlefield {
-	private final Map<Point, Area> cells = new HashMap<Point, Area>();
-	private final Set<Sector> sectors = new HashSet<Sector>();
+	private final Map<Point, Area> cells = new HashedMap<Point, Area>();
+	private final Set<Sector> sectors = new LinkedHashSet<Sector>();
 	private final int width;
 	private final int height;
 
