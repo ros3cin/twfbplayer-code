@@ -8,7 +8,7 @@
 		<!-- always clean -->
 		<delete dir="antbuild" />
 		<mkdir dir="antbuild" />
-		<javac srcdir="src" destdir="antbuild" includeantruntime="false">
+		<javac srcdir="src" destdir="antbuild" includeantruntime="false" debug="true" debuglevel="lines">
 			<classpath>
 				<fileset dir="lib">
 					<include name="*.jar" />
@@ -37,7 +37,7 @@
 			<manifest>
 				<attribute name="Main-Class" value="de.outstare.fortbattleplayer.Main" />
 				<attribute name="Class-Path" value="." />
-				<attribute name="Sealed" value="true" />
+				<attribute name="Sealed" value="false" />
 				<attribute name="Application-Name" value="Fortbattle Player" />
 				<attribute name="Extension-Name" value="de.outstare.fortbattleplayer" />
 				<attribute name="Specification-Version" value="${fbversion}" />
